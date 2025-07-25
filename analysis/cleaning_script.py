@@ -1,8 +1,21 @@
 import pandas as pd
-import numpy as np
-import csv
 import re
 import ast
+import datetime
+import sys
+
+if len(sys.argv) < 2:
+    print("Usage: python3/python main.py <chunksize>")
+    sys.exit(1)
+
+now = datetime.datetime.now()
+OUTPUT_DIR = f"../data/final/processed_data_{now}.csv"
+
+try:
+    chunksize = int(sys.argv[1])
+except ValueError:
+    print("Argument must be an integer")
+    sys.exit(1)
 
 # options
 pd.options.display.max_columns = False
@@ -12,7 +25,7 @@ chunk = pd.read_csv(
     sep=",",
     encoding="utf-8",
     on_bad_lines="skip",
-    chunksize=11000,
+    chunksize=chunksize,
 )
 
 
@@ -21,7 +34,7 @@ def to_integer(s: str) -> pd.Int64Dtype():
     return int(match.group(1)) if match else pd.NA
 
 
-df = chunk.get_chunk(11000)
+df = chunk.get_chunk(chunksize)
 
 selected_cols = [
     "title",
@@ -81,8 +94,7 @@ df = df[~(mask == False)]
 
 mask = df["Title"].str.contains(r"\b(Location)\b", regex=True, na=False, case=False)
 
-df_location = df[mask]
-df_vente = df[~mask]
+df["isForRent"] = mask
 
-df_location.to_csv("../data/processed_renting.csv", index=False)
-df_vente.to_csv("../data/processed_selling.csv", index=False)
+
+df.to_csv(OUTPUT_DIR)

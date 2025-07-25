@@ -3,14 +3,25 @@ import json
 import pandas as pd
 import time
 import random
+import sys
+
+
+if len(sys.argv) < 2:
+    print("Usage: python3/python main.py <number_of_pages>")
+    sys.exit(1)
 
 url = "https://api.ouedkniss.com/graphql"
 USER_AGENT = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ",
     "(KHTML, like Gecko) Chrome/116.0.5845.111 Safari/537.36",
 ]
-PAGES = 1000
 OUTPUT_DIR = "../data/raw.csv"
+
+try:
+    PAGES = int(sys.argv[1])
+except ValueError:
+    print("Argument must be an integer")
+    sys.exit(1)
 
 res = []
 
@@ -53,12 +64,14 @@ def get_data(page):
 
 
 for x in range(1, PAGES):
-    data = get_data(x)
-
-    for p in data["data"]["search"]["announcements"]["data"]:
-        res.append(p)
-
-    print(len(res))
+    try:
+        data = get_data(x)
+        for p in data["data"]["search"]["announcements"]["data"]:
+            res.append(p)
+        print("Page: ", len(res))
+    except Exception as e:
+        print(f"Error at page {x}: ", e)
+        sys.exit(1)
 
     if x == 1:
         df = pd.json_normalize(res)
@@ -66,7 +79,4 @@ for x in range(1, PAGES):
     else:
         df = pd.json_normalize(res)
         df_to_csv = df.to_csv(OUTPUT_DIR, index=False, mode="a", header=False)
-    time.sleep(random.uniform(1, 4))
-
-df = pd.json_normalize(res)
-df.to_csv("data.csv", index=False)
+    time.sleep(random.uniform(1, 3))
