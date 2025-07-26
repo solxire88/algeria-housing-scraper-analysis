@@ -68,7 +68,7 @@ for x in range(1, PAGES):
         data = get_data(x)
         for p in data["data"]["search"]["announcements"]["data"]:
             res.append(p)
-        print("Page: ", len(res))
+        print("Rows: ", len(res))
     except Exception as e:
         print(f"Error at page {x}: ", e)
         sys.exit(1)

@@ -8,7 +8,7 @@ if len(sys.argv) < 2:
     print("Usage: python3/python main.py <chunksize>")
     sys.exit(1)
 
-now = datetime.datetime.now()
+now = datetime.datetime.now().date()
 OUTPUT_DIR = f"../data/final/processed_data_{now}.csv"
 
 try:
