@@ -8,9 +8,9 @@
 
 This project pipelines raw property listings from OuedKniss into a cleaned dataset, enabling detailed market analysis and interactive Power BI dashboards. It demonstrates end-to-end data analytics skills:
 
-1. **Web Scraping**: Automated collection of real estate listings via the OuedKniss GraphQL API.
-2. **Data Cleaning & Enrichment**: Processing raw JSON to structured CSV, extracting geolocation and property attributes.
-3. **Visualization & Reporting**: Building interactive Power BI dashboards to communicate key findings.
+1. **Web Scraping**: Automated collection of real estate listings via the OuedKniss GraphQL API. [Check script here](scraper/main.py)
+2. **Data Cleaning & Enrichment**: Processing raw JSON to structured CSV, extracting geolocation and property attributes. [Check notebook here](analysis/notebooks/cleaning_script.ipynb)
+4. **Visualization & Reporting**: Building interactive Power BI dashboards to communicate key findings. [Download Interactive Dashboard here](dashboards/Dashboard.pbix)
 
 ![Dashboard Overview](https://tntaizamsozuvsaecpsl.supabase.co/storage/v1/object/public/portfolio/images/RealEstateProject.png)
 
