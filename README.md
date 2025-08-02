@@ -120,16 +120,16 @@ The project includes comprehensive Power BI dashboards providing insights into:
 *[Space reserved for Power BI dashboard screenshots]*
 
 #### Main Dashboard Overview
-![Dashboard Overview](screenshots/dashboard_overview.png)
+![Dashboard Overview](https://tntaizamsozuvsaecpsl.supabase.co/storage/v1/object/public/portfolio/images/RealEstateProject.png)
 
 #### Price Analysis by Region
-![Price Analysis](screenshots/price_analysis.png)
+![Price Analysis](https://tntaizamsozuvsaecpsl.supabase.co/storage/v1/object/public/portfolio/images/RealEstateProject2.png)
 
 #### Property Type Distribution
-![Property Types](screenshots/property_types.png)
+![Property Types](https://tntaizamsozuvsaecpsl.supabase.co/storage/v1/object/public/portfolio/images/RealEstateProject3.png)
 
-#### Market Trends Over Time
-![Market Trends](screenshots/market_trends.png)
+#### Scatter Analysis
+![Market Trends](https://tntaizamsozuvsaecpsl.supabase.co/storage/v1/object/public/portfolio/images/RealEstateProject4.png)
 
 ## Configuration
 
